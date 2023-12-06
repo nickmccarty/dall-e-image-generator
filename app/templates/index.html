@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DALL-E Image Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">DALL-E Image Generator</h1>
+        <form id = "generateForm" method="post" action="{{ url_for('generate_image') }}">
+            <div class="form-group">
+                <label for="text_input">Enter Text:</label>
+                <input type="text" class="form-control" id="text_input" name="text_input" required>
+            </div>
+            <button id = "generateButton" type="submit" class="btn btn-primary">Generate Image</button>
+        </form>
+
+        {% if image_url %}
+        <div class="mt-4 container">
+            <!-- <h3>Generated Image:</h3> -->
+            <div class = "row justify-content-center">
+                <h6 class="mt-2">{{ user_input }}</h6>
+                <div class="col-lg-6">
+                    <a href="{{ image_url }}">
+                        <img src="{{ image_url }}" alt="Generated Image" class="img-thumbnail">
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
